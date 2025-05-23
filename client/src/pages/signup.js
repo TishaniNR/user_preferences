@@ -1,5 +1,6 @@
 import * as webix from "webix";
-import { api } from "../api";
+import { api } from "../utils/api";
+import { setUserId } from "../auth";
 export const SignUpPage = {
   view: "form",
   scroll: false,
@@ -8,7 +9,6 @@ export const SignUpPage = {
     { template: "Sign Up", type: "header" },
     { view: "text", name: "name", label: "Name", required: true },
     { view: "text", name: "surname", label: "Surname", required: true },
-    { view: "text", name: "username", label: "Username", required: true },
     {
       view: "text",
       name: "email",
@@ -63,7 +63,6 @@ export const SignUpPage = {
             const result = await api.signup({
               first_name: values.name,
               last_name: values.surname,
-              username: values.username,
               email: values.email,
               password: values.password,
               confirm_password: values.confirm_password,
@@ -71,6 +70,9 @@ export const SignUpPage = {
               newsletter: values.newsletter,
             });
             if (result.message) {
+              // set user ID in authenticate current user
+              console.log(result);
+              setUserId(result.user_id);
               webix.message(result.message);
               if (window.showView) window.showView("home");
             } else {
@@ -90,11 +92,29 @@ export const SignUpPage = {
         },
       ],
     },
+    {
+      margin: 10,
+      rows: [
+        {
+          template: "Already have an account?",
+          borderless: true,
+          height: 30,
+          css: "webix_label",
+        },
+        {
+          view: "button",
+          value: "Login",
+          css: "webix_secondary",
+          click: function () {
+            if (window.showView) window.showView("login");
+          },
+        },
+      ],
+    },
   ],
   rules: {
     name: webix.rules.isNotEmpty,
     surname: webix.rules.isNotEmpty,
-    username: webix.rules.isNotEmpty,
     email: webix.rules.isEmail,
     password: function (value) {
       return value ? true : "Password is required";

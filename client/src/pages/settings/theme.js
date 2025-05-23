@@ -1,5 +1,5 @@
 import * as webix from "webix";
-
+import { getUserIdFromURL, api } from "../../utils/api";
 export const ThemePage = {
   id: "theme",
   view: "form",
@@ -10,12 +10,30 @@ export const ThemePage = {
   elementsConfig: {
     labelPosition: "top",
     labelAlign: "left",
-    labelWidth: 200,
-    width: 300,
   },
 
   elements: [
-    { template: "🎨 Theme Settings", type: "header" },
+    {
+      cols: [
+        {
+          view: "icon",
+          icon: "mdi mdi-arrow-left",
+          css: "back-icon",
+          width: 40,
+          click: () => {
+            if (window.showView) window.showView("settings");
+          },
+        },
+        {
+          template: "🎨 Theme Settings",
+          type: "header",
+          css: "setting-header",
+          borderless: true,
+          padding: { left: 10 },
+          gravity: 3,
+        },
+      ],
+    },
     { template: "Appearance", type: "section" },
     {
       view: "richselect",
@@ -117,7 +135,6 @@ export const ThemePage = {
       view: "checkbox",
       labelRight: "Reduced Motion",
       name: "reduced_motion",
-      // You can handle animation preferences here if needed
     },
 
     {
@@ -135,7 +152,66 @@ export const ThemePage = {
             }
           },
         },
+        {
+          view: "button",
+          value: "Clear",
+          click: function () {
+            this.getFormView().clear();
+          },
+        },
       ],
     },
   ],
+  on: {
+    onViewShow: function () {
+      const userId = getUserIdFromURL();
+      if (userId) {
+        api.getUserData(userId).then((userData) => {
+          if (userData && userData.theme_settings) {
+            const theme = userData.theme_settings;
+            const formValues = {
+              theme_mode: theme.mode || "LI",
+              accent_color: theme.accent_color || "BL",
+              font_style: theme.font_style || "DE",
+              high_contrast_mode: theme.high_contrast_mode ?? false,
+              reduced_motion: theme.reduced_motion ?? false,
+            };
+
+            this.setValues(formValues);
+
+            if (formValues.theme_mode === "DA")
+              document.body.classList.add("dark-theme");
+            else document.body.classList.remove("dark-theme");
+
+            const accentMap = {
+              BL: "accent-blue",
+              GR: "accent-green",
+              PU: "accent-purple",
+              RE: "accent-red",
+            };
+            Object.values(accentMap).forEach((c) =>
+              document.body.classList.remove(c)
+            );
+            if (accentMap[formValues.accent_color])
+              document.body.classList.add(accentMap[formValues.accent_color]);
+
+            const fontMap = {
+              DE: "font-default",
+              SE: "font-serif",
+              MO: "font-monospace",
+            };
+            Object.values(fontMap).forEach((c) =>
+              document.body.classList.remove(c)
+            );
+            if (fontMap[formValues.font_style])
+              document.body.classList.add(fontMap[formValues.font_style]);
+
+            if (formValues.high_contrast_mode)
+              document.body.classList.add("high-contrast");
+            else document.body.classList.remove("high-contrast");
+          }
+        });
+      }
+    },
+  },
 };

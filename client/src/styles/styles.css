@@ -10,7 +10,7 @@
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.3); /* semi-transparent overlay */
+  background: rgba(0, 0, 0, 0.3); 
   z-index: 0;
 }
 
@@ -19,49 +19,94 @@
   z-index: 1;
 }
 
+.transparent-template {
+  background-color: transparent !important;
+}
+
+.home-welcome {
+  text-align: center;
+  font-weight: bold;
+  font-size: 48px;
+  padding: 100px 0;
+  color: #ffffff; 
+}
+
+.home-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f1f1f1; 
+  text-align: center;
+  padding: 10px 0;
+  box-shadow: 0 -1px 0px rgba(0,0,0,0.1);
+  font-size: 24px;
+  color: #11141e;
+  z-index: 1000;
+  opacity: 0.8;
+}
 
 
-/* Dark theme */
+.setting-header {
+  font-size: 36px;
+  color: #282311;
+  font-weight: bold;
+}
+
+/* Theme Modes */
 .dark-theme {
-    background-color: #222;
-    color: #eee;
+  background-color: #1e1e1e;
+  color: #ffffff;
 }
 
-/* Accent colors */
-.accent-blue { --accent-color: #2196F3; }
-.accent-green { --accent-color: #4CAF50; }
-.accent-purple { --accent-color: #9C27B0; }
-.accent-red { --accent-color: #F44336; }
-
-/* Apply accent color somewhere, e.g., links, buttons */
-body.accent-blue a,
-body.accent-green a,
-body.accent-purple a,
-body.accent-red a {
-    color: var(--accent-color);
+.light-theme {
+  background-color: #ffffff;
+  color: #000000;
 }
 
-/* Or apply accent color globally, e.g.: */
-body.accent-blue {
-    --webix-primary-color: #2196F3;
-}
-body.accent-green {
-    --webix-primary-color: #4CAF50;
-}
-body.accent-purple {
-    --webix-primary-color: #9C27B0;
-}
-body.accent-red {
-    --webix-primary-color: #F44336;
+/* Accent Colors */
+.accent-blue .webix_view {
+  --accent-color: #2196f3;
 }
 
-/* Font styles */
-.font-default { font-family: Arial, sans-serif; }
-.font-serif { font-family: Georgia, serif; }
-.font-monospace { font-family: "Courier New", monospace; }
+.accent-green .webix_view {
+  --accent-color: #4caf50;
+}
 
-/* High contrast */
+.accent-purple .webix_view {
+  --accent-color: #9c27b0;
+}
+
+.accent-red .webix_view {
+  --accent-color: #f44336;
+}
+
+
+.webix_button {
+  background-color: var(--accent-color, #2196f3); 
+  color: white;
+}
+
+/* Font Styles */
+.font-default {
+  font-family: Arial, sans-serif;
+}
+
+.font-serif {
+  font-family: Georgia, serif;
+}
+
+.font-monospace {
+  font-family: "Courier New", monospace;
+}
+
+/* High Contrast */
 .high-contrast {
-    filter: contrast(150%);
-    /* or custom high contrast styles */
+  filter: contrast(150%);
+}
+
+/* Reduced Motion */
+.reduced-motion * {
+  transition: none !important;
+  animation: none !important;
 }

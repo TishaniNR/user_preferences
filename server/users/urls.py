@@ -10,6 +10,5 @@ urlpatterns = router.urls
 
 urlpatterns+= [
     path('signup/', signup, name='signup'),
-    path("login/", login, name="login")
-
+    path("login/", login, name="login"),
 ]

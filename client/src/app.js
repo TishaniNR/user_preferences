@@ -8,6 +8,7 @@ import { AccountSettingsPage } from "./pages/settings/account.js";
 import { NotificationPage } from "./pages/settings/notification.js";
 import { ThemePage } from "./pages/settings/theme.js";
 import { PrivacyPage } from "./pages/settings/privacy.js";
+import { ForgetPasswordPage } from "./pages/forget_password.js";
 
 webix.ready(function () {
   webix.ui({
@@ -26,6 +27,7 @@ webix.ready(function () {
       { id: "notification", ...NotificationPage },
       { id: "theme", ...ThemePage },
       { id: "privacy", ...PrivacyPage },
+      { id: "forgot_password", ...ForgetPasswordPage },
     ],
   });
 

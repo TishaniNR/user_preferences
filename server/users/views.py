@@ -19,8 +19,7 @@ def signup(request):
                 email=data['email'],
                 password_hash=make_password(data['password'])
             )
-
-            return JsonResponse({'message': 'User created successfully'}, status=201)
+            return JsonResponse({'message': 'User created successfully', 'user_id': user.id}, status=201)
         except KeyError as e:
             return JsonResponse({'error': f'Missing field: {str(e)}'}, status=400)
         except Exception as e:
@@ -33,7 +32,7 @@ def login(request):
             data = json.loads(request.body)
             user = UserDetail.objects.get(email=data['email'])
             if user.check_password(data['password']):
-                return JsonResponse({'message': 'Login successful'}, status=200)
+                return JsonResponse({'message': 'Login successful', 'user_id': user.id}, status=200)
             else:
                 return JsonResponse({'error': 'Invalid credentials'}, status=400)
         except UserDetail.DoesNotExist:
