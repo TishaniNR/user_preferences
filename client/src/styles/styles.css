@@ -18,3 +18,50 @@
   position: relative;
   z-index: 1;
 }
+
+
+
+/* Dark theme */
+.dark-theme {
+    background-color: #222;
+    color: #eee;
+}
+
+/* Accent colors */
+.accent-blue { --accent-color: #2196F3; }
+.accent-green { --accent-color: #4CAF50; }
+.accent-purple { --accent-color: #9C27B0; }
+.accent-red { --accent-color: #F44336; }
+
+/* Apply accent color somewhere, e.g., links, buttons */
+body.accent-blue a,
+body.accent-green a,
+body.accent-purple a,
+body.accent-red a {
+    color: var(--accent-color);
+}
+
+/* Or apply accent color globally, e.g.: */
+body.accent-blue {
+    --webix-primary-color: #2196F3;
+}
+body.accent-green {
+    --webix-primary-color: #4CAF50;
+}
+body.accent-purple {
+    --webix-primary-color: #9C27B0;
+}
+body.accent-red {
+    --webix-primary-color: #F44336;
+}
+
+/* Font styles */
+.font-default { font-family: Arial, sans-serif; }
+.font-serif { font-family: Georgia, serif; }
+.font-monospace { font-family: "Courier New", monospace; }
+
+/* High contrast */
+.high-contrast {
+    filter: contrast(150%);
+    /* or custom high contrast styles */
+}

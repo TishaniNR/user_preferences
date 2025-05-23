@@ -2,15 +2,15 @@ export const HomePage = {
   view: "form",
   scroll: true,
   css: "home-background",
-  rows: [ 
+  rows: [
     {
       view: "button",
       label: "Login",
       width: 200,
       align: "center",
       click: function () {
-        if (window.showView) window.showView("login");  
-      }
+        if (window.showView) window.showView("login");
+      },
     },
     {
       view: "button",
@@ -18,28 +18,18 @@ export const HomePage = {
       width: 200,
       align: "center",
       click: function () {
-        if (window.showView) window.showView("signup");  
-      }
-    },
-    {
-        view: "button",
-        label: "Go to Settings",
-        width: 200,
-        align: "center",
-        click: function () {
-            if (window.showView) window.showView("settings"); 
-        }
+        if (window.showView) window.showView("signup");
+      },
     },
     {
       view: "button",
-      label: "Go to Extra Components",
+      label: "Go to Settings",
       width: 200,
       align: "center",
       click: function () {
-        if (window.showView) window.showView("extra_components"); 
-      }
+        if (window.showView) window.showView("settings");
+      },
     },
-    
-    {}
-  ]
+    {},
+  ],
 };

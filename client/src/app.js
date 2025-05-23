@@ -4,15 +4,16 @@ import { LoginPage } from "./pages/login.js";
 import { SettingsPage } from "./pages/settings.js";
 import { SignUpPage } from "./pages/signup.js";
 import { ExtraComponents } from "./components/extra_components.js";
-
+import { AccountSettingsPage } from "./pages/settings/account.js";
+import { NotificationPage } from "./pages/settings/notification.js";
+import { ThemePage } from "./pages/settings/theme.js";
+import { PrivacyPage } from "./pages/settings/privacy.js";
 
 webix.ready(function () {
   webix.ui({
     container: "app",
-    // Use a single full-height multiview directly:
     view: "multiview",
     id: "mainView",
-    // Give it full height and width:
     width: window.innerWidth,
     height: window.innerHeight,
     cells: [
@@ -21,6 +22,10 @@ webix.ready(function () {
       { id: "settings", ...SettingsPage },
       { id: "signup", ...SignUpPage },
       { id: "extra_components", ...ExtraComponents },
+      { id: "account", ...AccountSettingsPage },
+      { id: "notification", ...NotificationPage },
+      { id: "theme", ...ThemePage },
+      { id: "privacy", ...PrivacyPage },
     ],
   });
 

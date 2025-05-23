@@ -4,16 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Webix App</title>
-  <link rel="stylesheet" href="https://cdn.webix.com/edge/webix.css" type="text/css" />
+
+  <!-- Webix CSS -->
+  <link rel="stylesheet" href="https://cdn.webix.com/edge/webix.css" />
+
+  <!-- Material Design Icons -->
   <link href="https://cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="src/styles/styles.css" type="text/css" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="src/styles/styles.css" />
 
   <style>
     html, body {
       height: 100%;
       margin: 0;
       padding: 0;
-      overflow: hidden; /* prevent scrollbars */
+      overflow: hidden;
     }
     #app {
       width: 100%;
@@ -22,7 +28,10 @@
   </style>
 </head>
 <body>
+  
   <div id="app"></div>
-  <script type="module" src="/src/app.js"></script>
+      
+  <!-- Your application (uses module, so keep last) -->
+  <script type="module" src="src/app.js"></script>
 </body>
 </html>
