@@ -44,7 +44,7 @@ cd server
 
 # activate a Python virtual environment
 python3 -m venv venv
-source venv/bin/activate    
+.\venv\bin\Activate.ps1   
 
 # Run django migration
 python manage.py migrate
