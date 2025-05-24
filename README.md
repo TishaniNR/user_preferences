@@ -34,7 +34,7 @@ user_preferences/
 ├── README.md
 
 # Install and Setup
-git clone https://github.com/yourusername/user_preferences.git
+git clone git@github.com:TishaniNR/user_preferences.git
 cd user_preferences
 
 # backend setup
@@ -64,3 +64,6 @@ npm start
 (default it will run : http://localhost:5173)
 
 
+# test user
+email : test1@gmail.com
+password : test1
