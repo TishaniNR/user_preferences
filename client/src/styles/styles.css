@@ -1,0 +1,112 @@
+.home-background {
+  background-image: url("../assets/rm314-adj-13.jpg");  
+  background-size: cover;                   
+  background-position: center center;       
+  background-repeat: no-repeat;
+}
+
+.home-background::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.3); 
+  z-index: 0;
+}
+
+.home-background .webix_view {
+  position: relative;
+  z-index: 1;
+}
+
+.transparent-template {
+  background-color: transparent !important;
+}
+
+.home-welcome {
+  text-align: center;
+  font-weight: bold;
+  font-size: 48px;
+  padding: 100px 0;
+  color: #ffffff; 
+}
+
+.home-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f1f1f1; 
+  text-align: center;
+  padding: 10px 0;
+  box-shadow: 0 -1px 0px rgba(0,0,0,0.1);
+  font-size: 24px;
+  color: #11141e;
+  z-index: 1000;
+  opacity: 0.8;
+}
+
+
+.setting-header {
+  font-size: 36px;
+  color: #282311;
+  font-weight: bold;
+}
+
+/* Theme Modes */
+.dark-theme {
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+.light-theme {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Accent Colors */
+.accent-blue .webix_view {
+  --accent-color: #2196f3;
+}
+
+.accent-green .webix_view {
+  --accent-color: #4caf50;
+}
+
+.accent-purple .webix_view {
+  --accent-color: #9c27b0;
+}
+
+.accent-red .webix_view {
+  --accent-color: #f44336;
+}
+
+
+.webix_button {
+  background-color: var(--accent-color, #2196f3); 
+  color: white;
+}
+
+/* Font Styles */
+.font-default {
+  font-family: Arial, sans-serif;
+}
+
+.font-serif {
+  font-family: Georgia, serif;
+}
+
+.font-monospace {
+  font-family: "Courier New", monospace;
+}
+
+/* High Contrast */
+.high-contrast {
+  filter: contrast(150%);
+}
+
+/* Reduced Motion */
+.reduced-motion * {
+  transition: none !important;
+  animation: none !important;
+}

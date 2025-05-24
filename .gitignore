@@ -1,0 +1,20 @@
+#Ignore node_modules
+client/node_modules
+
+#Ignore build
+client/build
+
+#Environment variables
+client/.env
+
+# Ignore Python virtual environment in server folder
+server/venv/
+
+# Database files
+server/db.sqlite3
+
+server/__pycache__/
+server/user/__pycache__/
+server/user/migrations/__pycache__/
+
+
