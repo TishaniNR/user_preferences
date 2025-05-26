@@ -44,7 +44,12 @@ cd server
 
 # activate a Python virtual environment
 python3 -m venv venv
-source venv/bin/activate    
+.\venv\bin\Activate.ps1
+
+# install django
+pip install django
+pip install django-cors-headers
+pip install djangorestframework
 
 # Run django migration
 python manage.py migrate
@@ -64,6 +69,3 @@ npm start
 (default it will run : http://localhost:5173)
 
 
-# test user
-email : test1@gmail.com
-password : test1

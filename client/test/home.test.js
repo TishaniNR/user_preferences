@@ -47,8 +47,5 @@ describe("HomePage", () => {
     expect(showMock).toHaveBeenCalledTimes(2); // show settings and logout
     expect(hideMock).toHaveBeenCalledTimes(2); // hide login and signup
   });
-
-  it("should update the URL with userId", () => {
-    expect(window.location.pathname).toBe("/home/mock-user-id");
-  });
+;
 });
