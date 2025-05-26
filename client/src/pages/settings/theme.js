@@ -1,5 +1,13 @@
 import * as webix from "webix";
 import { getUserIdFromURL, api } from "../../utils/api";
+function applyFontScale(fontSizeFactor) {
+  // This changes only the font size (not the entire layout scale)
+  document.documentElement.style.setProperty("--font-size-scale", fontSizeFactor);
+
+  // Optionally apply a base font size directly
+  document.body.style.fontSize = `${fontSizeFactor}em`;
+}
+
 export const ThemePage = {
   id: "theme",
   view: "form",
@@ -121,6 +129,22 @@ export const ThemePage = {
       },
     },
     {
+  view: "slider",
+  label: "Font Size",
+  name: "font_size",
+  min: 0.8,
+  max: 1.6,
+  step: 0.1,
+  value: 1.0,
+  title: "#value#x",
+  on: {
+    onChange: function (newVal) {
+      applyFontScale(newVal);
+    },
+  },
+},
+
+    {
       view: "checkbox",
       labelRight: "High Contrast Mode",
       name: "high_contrast_mode",
@@ -178,6 +202,10 @@ export const ThemePage = {
             };
 
             this.setValues(formValues);
+            if (formValues.font_size) {
+  applyFontScale(formValues.font_size);
+}
+
 
             if (formValues.theme_mode === "DA")
               document.body.classList.add("dark-theme");

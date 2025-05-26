@@ -1,6 +1,7 @@
 import * as webix from "webix";
 import { getUserId } from "../auth";
 export const HomePage = {
+  id: "home",
   view: "form",
   scroll: true,
   css: "home-background",
@@ -59,9 +60,8 @@ export const HomePage = {
         });
         if (result) {
           localStorage.removeItem("userId");
-          const baseUrl = window.location.origin + window.location.pathname;
-          history.replaceState({}, document.title, baseUrl);
-          if (window.showView) window.showView("home");
+
+          window.location.href = window.location.origin + "/home";
         }
       },
     },

@@ -72,7 +72,7 @@ describe("SignUpPage", () => {
     // Mock api.signup response
     api.signup.mockResolvedValue({
       message: "Signup successful",
-      user_id: "user-123",
+      user_id: "20",
     });
 
     // Spy on webix.message
@@ -88,8 +88,8 @@ describe("SignUpPage", () => {
       email: "john.doe@example.com",
       password: "password123",
       confirm_password: "password123",
-      terms: true,
-      newsletter: true,
+      terms: false,
+      newsletter: false,
     });
 
     expect(setUserId).toHaveBeenCalledWith("user-123");
@@ -106,7 +106,7 @@ describe("SignUpPage", () => {
       email: "john.doe@example.com",
       password: "password123",
       confirm_password: "password123",
-      terms: true,
+      terms: false,
       newsletter: false,
     });
 

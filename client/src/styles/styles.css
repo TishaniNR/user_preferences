@@ -53,16 +53,32 @@
   font-weight: bold;
 }
 
-/* Theme Modes */
 .dark-theme {
   background-color: #1e1e1e;
   color: #ffffff;
 }
 
-.light-theme {
-  background-color: #ffffff;
-  color: #000000;
+.dark-theme .webix_view {
+  background-color: #373739;
+  color: #ffffff;
+  border-color: #444;
 }
+
+.dark-theme .webix_form input,
+.dark-theme .webix_control,
+.dark-theme .webix_list_item {
+  background-color: #3a3a3a !important;
+  color: #ffffff !important;
+}
+.dark-theme label {
+  color: #ccc !important;
+}
+
+.dark-theme .webix_button {
+  background-color: #0b9bde82 !important;
+  color: #cdc2c2 !important;
+}
+
 
 /* Accent Colors */
 .accent-blue .webix_view {
@@ -109,4 +125,27 @@
 .reduced-motion * {
   transition: none !important;
   animation: none !important;
+}
+
+:root {
+  --font-size-scale: 1;
+}
+
+body {
+  font-size: calc(16px * var(--font-size-scale));
+}
+
+.webix_view,
+.webix_label,
+.webix_input input,
+.webix_template,
+.webix_control,
+.webix_checkbox_box,
+.webix_checkbox_label,
+.webix_button,
+.webix_form .webix_el_box label,
+.webix_el_richselect .webix_inp_static,
+.webix_el_slider .webix_el_box,
+.webix_section {
+  font-size: calc(16px * var(--font-size-scale)) !important;
 }

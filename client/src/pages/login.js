@@ -34,25 +34,33 @@ export const LoginPage = {
           value: "Login",
           css: "webix_primary",
           click: async function () {
-            const values = this.getFormView().getValues();
+          const values = this.getFormView().getValues();
+
+          try {
             const result = await api.login({
               email: values.email,
               password: values.password,
             });
 
             if (result.message) {
-              // set user ID in authenticate current user
               setUserId(result.user_id);
               webix.message(result.message);
-              // redirect to home page
               if (window.showView) window.showView("home");
             } else {
               webix.message({
                 type: "error",
-                text: result.error || "Login failed",
+                text: "Invalid username or password",
               });
             }
-          },
+          } catch (error) {
+            console.error("Login error:", error);
+            webix.message({
+              type: "error",
+              text: "ILogin failed. Please try again later.",
+            });
+          }
+        },
+
         },
         {
           view: "button",
